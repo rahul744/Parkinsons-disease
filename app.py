@@ -27,7 +27,7 @@ def main():
     """
     danger_html="""  
       <div style="background-color:#F4D03F;padding:10px >
-       <h2 style="color:black ;text-align:center;">  You Don't Have Disease</h2>
+       <h2 style="color:black ;text-align:center;"> You Don't Have Disease</h2>
        </div>
     """
 
@@ -35,7 +35,9 @@ def main():
         output=predict_disease(HNR, NHR, JitterDDP)
         st.success('The Accuracy of getting Disease is: {}'.format(output))
 
-        if output < 0.90:
+        if output <0.90:
+            st.markdown(danger_html,unsafe_allow_html=True)
+        elif output >=1.0:
             st.markdown(danger_html,unsafe_allow_html=True)
         else:
             st.markdown(safe_html,unsafe_allow_html=True)
