@@ -21,12 +21,12 @@ def main():
     NHR = st.text_input("NHR","Type Here")
     JitterDDP = st.text_input("Jitter:DDP","Type Here")
     safe_html="""  
-      <div style="background-color:#F4D03F;padding:10px >
+      <div style="background-color:#F08080;padding:10px >
        <h2 style="color:white;text-align:center;">  You Have Disease</h2>
        </div>
     """
     danger_html="""  
-      <div style="background-color:#F08080;padding:10px >
+      <div style="background-color:#F4D03F;padding:10px >
        <h2 style="color:black ;text-align:center;">  You Don't Have Disease</h2>
        </div>
     """
@@ -35,7 +35,7 @@ def main():
         output=predict_disease(HNR, NHR, JitterDDP)
         st.success('The Accuracy of getting Disease is: {}'.format(output))
 
-        if output > 90:
+        if output < 90.0:
             st.markdown(danger_html,unsafe_allow_html=True)
         else:
             st.markdown(safe_html,unsafe_allow_html=True)
