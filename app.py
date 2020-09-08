@@ -35,7 +35,7 @@ def main():
         output=predict_disease(HNR, NHR, JitterDDP)
         st.success('The Accuracy of getting Disease is: {}'.format(output))
 
-        if output < 90.0:
+        if output < 0.90:
             st.markdown(danger_html,unsafe_allow_html=True)
         else:
             st.markdown(safe_html,unsafe_allow_html=True)
